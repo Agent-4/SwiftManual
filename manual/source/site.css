@@ -127,12 +127,12 @@ li a {
   -moz-transition: all .2s;
   -webkit-transition: all .2s;
   transition: all 0.2s;
-  margin-top: 64px;
+  margin-top: 50px;
   display: block;
   background: #fff;
   width: 150px;
   height: 70px;
-  padding: 1em;
+  padding: 2em 1em 3.2em 1em;
 }
 
 pre {

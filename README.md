@@ -1,6 +1,6 @@
 # Swift 3.0 语法速查 
 
-在线查看 [http://moxiaohao.com/SwiftManual/](http://moxiaohao.com/SwiftManual/) 
+在线查看 [http://moxiaohao.com/SwiftManual](http://moxiaohao.com/SwiftManual) 或  [http://four4.coding.me/SwiftManual](http://four4.coding.me/SwiftManual)
 
 （原作者 [DarielChen](https://github.com/DarielChen) Git 仓库已删除，所以在此提供查看）
 

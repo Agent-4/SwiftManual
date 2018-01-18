@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Swift 3.0 语法速查 - 变量与常量</title>
+    <link rel="stylesheet" href="../source/site.css">
+    <link rel="stylesheet" href="../source/prism.css">
+    <link rel="shortcut icon" href="../source/favicon.ico">
+</head>
+<body>
+<div id="container">
+    <h1>
+        <a href='#'><img src="../source/swift.png" > Swift 3.0 语法速查</a>
+        <span class="topic">变量与常量</span>
+    </h1>
+
+    <main>
+        <table>
+            <tbody>
+            <tr>
+                <td class='docs'></td>
+                <td class='code'>
+                    <pre><code class='language-swift'> </code></pre>
+                </td>
+            </tr>
+
+            <tr>
+                <td class='docs'> 1. 定义一个字符串常量与变量 </td>
+                <td class='code'>
+                    <pre><code class='language-swift'>let constantString: String = "Hello"  // let 常量名称: 字符串类型 = "字符串"
+var varibleString: String = "World"   // var 变量名称: 字符串类型 = "字符串"</code></pre>
+                </td>
+            </tr>
+
+            <tr>
+                <td class='docs'> 2. 变量与常量的类型.swift会自动作类型推断,所以类型名可以省略 </td>
+                <td class='code'>
+                    <pre><code class='language-swift'>let constantInt: Int = 1              // 常见的类型有 Int Double Float String
+var pi = 3.14                         // 编译器会自动推断出pi是Double类型
+pi = "Hello"                          // ❌,类型不匹配,pi为Double类型</code></pre>
+                </td>
+            </tr>
+
+            <tr>
+                <td class='docs'> 3. 变量的可变与常量的不可变 </td>
+                <td class='code'><pre><code class='language-swift'>constantInt = 2                       // ❌,constantInt是一个常量
+pi = 3.1415926                        // ✅</code></pre></td>
+
+            </tr>
+
+            <tr>
+                <td class='docs'> 4. 输出常量与变量 </td>
+                <td class='code'><pre><code class='language-swift'>print(constantInt)                    // 1
+print("π的值是:\(pi)")                 // 输出:3.1415926.输出字符串时将常量或变量放入\()中 </code></pre></td>
+
+            </tr>
+
+
+            <tr>
+                <td class='docs'> 5. 类型转换 </td>
+                <td class='code'><pre><code class='language-swift'>let three = 3                         // 按住option,鼠标移动到变量名上,点击可以查看常量类型
+var pointOneFour = 0.14               // 系统自动推断pointOneFour的类型为:Double
+pi = Double(three) + pointOneFour     // 只有类型一直才能操作,转换格式: 类型名(变量或常量)
+let piInt = Int(pi)                   // Double转Int,系统自动忽略小数点后面的数,会损失精度</code></pre></td>
+
+            </tr>
+
+
+            <tr>
+                <td class='docs'> 6. 布尔值 </td>
+                <td class='code'><pre><code class='language-swift'>let trueValue = true                  // Bool值有两种类型: true false
+let falseValue = false                // 在循环,选择语句(比如if语句)的条件判断中只能使用Bool值
+let i = 1
+if i {
+    // 会报错,i不是bool类型
+}
+if i==1 {
+    print(i==1)                       // true
+    // i==1是一个Bool值返回true
+}</code></pre></td>
+            </tr>
+
+
+
+            <tr>
+                <td class='docs'> 7. 元组:多个可以是不同类型原色的集合 </td>
+                <td class='code'><pre><code class='language-swift'>let http404Error = (404, "Not Found") // 类型为:(Int, String),元组中的元素类型可以不同
+let (code, message) = http404Error    // 将元组赋值给一个常量
+print("code:\(code), message:\(message)") // code:404, message:Not Found
+let (_, ErrorMessage) = http404Error  // _ 可以起到省略的作用,这个在swift中应用很广泛
+print(http404Error.1)                 // Not Found 通过下标访问元素
+let ErrorCode = (requestError:401, 402, 403) // 定义元组的时候可以给单个元素命名
+                </code></pre></td>
+
+            </tr>
+
+
+
+            </tbody>
+        </table>
+        <nav>
+            <a href="../01-hello-world" class="prev" rel="prev">Hello World</a>
+            <a href="../03-optionals" class="next" rel="next">可选类型</a>
+        </nav>
+
+    </main>
+
+    <footer>
+        Powered by <a href="https://github.com/DarielChen" target="_blank">DarielChen</a>
+        <a href="https://github.com/Agent-4/SwiftManual.git" target="_blank">Source</a>
+          Modified by <a class="four" href="https://github.com/Agent-4" target="_blank">FOUR</a>
+        <br>
+          <span class="Tips"><span style="color: #f66">❤</span> We're all stories in th end.  Just make it a good one, eh ?</span>
+      </footer>
+
+</div>
+<script async src="../source/site.js"></script>
+<script src="../source/prism.js"></script>
+</body>
+</html>

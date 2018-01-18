@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Swift 3.0 语法速查 - 基本运算符</title>
+    <link rel="stylesheet" href="../source/site.css">
+    <link rel="stylesheet" href="../source/prism.css">
+    <link rel="shortcut icon" href="../source/favicon.ico">
+</head>
+<body>
+<div id="container">
+    <h1>
+        <a href='#'><img src="../source/swift.png" > Swift 3.0 语法速查</a>
+        <span class="topic">基本运算符</span>
+    </h1>
+
+    <main>
+        <table>
+            <tbody>
+            <tr>
+                <td class='docs'></td>
+                <td class='code'>
+                    <pre><code class='language-swift'> </code></pre>
+                </td>
+            </tr>
+
+            <tr>
+                <td class='docs'> 1. 赋值运算符: = </td>
+                <td class='code'>
+                    <pre><code class='language-swift'>let b = 10
+var a = 5
+a = b                                  // a为10,"="的意思:把b的值赋值给a
+                    </code></pre>
+                </td>
+            </tr>
+
+            <tr>
+                <td class='docs'> 2. 多元组:同时定义多个常量或者变量 </td>
+                <td class='code'>
+                    <pre><code class='language-swift'>let (x, y) = (1, 4)                    // 多元组会被自动分解多个常量变量
+print(x)                               // 1, x为常量
+print(y)                               // 4, y为常量</code></pre>
+                </td>
+            </tr>
+
+            <tr>
+                <td class='docs'> 3. 算术运算符: + - * / </td>
+                <td class='code'>
+                    <pre><code class='language-swift'>1 + 1                                  // 2
+3 - 1                                  // 2
+1 * 2                                  // 2
+6 / 3                                  // 2
+print("Hello"+"World")                 // HelloWorld, 利用"+"可以进行字符串的拼接 </code></pre></td>
+            </tr>
+
+            <tr>
+                <td class='docs'> 4. 求余运算符: % </td>
+                <td class='code'>
+                    <pre><code class='language-swift'>7 % 3                                  // 1, 2*3+1
+-11 % 3                                // -2, 11前的负号能被保留
+11 % -3                                // 2, 3的负号会被忽略,与上面-11 % 3的取余不一样</code></pre>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class='docs'> 5. 组合赋值运算符: += </td>
+                <td class='code'>
+                    <pre><code class='language-swift'>a += 2                                 // 12, 等价于 a = a + 2
+</code></pre>
+                </td>
+            </tr>
+
+            <tr>
+                <td class='docs'> 6. 比较运算符: == != > < >= <= </td>
+                <td class='code'>
+                    <pre><code class='language-swift'>3 == 4                                 // false
+3 != 4                                 // true
+3 > 4                                  // false
+3 < 4                                  // true
+3 >= 4                                 // false
+3 <= 4                                 // true
+</code></pre>
+                </td>
+            </tr>
+
+            <tr>
+                <td class='docs'> 7. 三目运算符: a ? b : c </td>
+                <td class='code'>
+                    <pre><code class='language-swift'>let c = a == 2 ? 7 : 8                 // 8, 如果a==2为true,那么c为7,否则为8
+</code></pre>
+                </td>
+            </tr>
+
+            <tr>
+                <td class='docs'> 8. 空合运算符: a ?? b </td>
+                <td class='code'>
+                    <pre><code class='language-swift'>let optionalE: Int? = 4                // ?? 前面那个值要为可选类型
+let d = optionalE ?? b                 // 4, 如果optionalE为空,d为b的值
+                                       // 如果不为空就是optionalE解包后的值</code></pre>
+                </td>
+            </tr>
+
+            <tr>
+                <td class='docs'> 9. 区间运算符: 表示一个区间的值 </td>
+                <td class='code'>
+                    <pre><code class='language-swift'>1...5                                  // 定义一个1到5的数,包含1和5
+1..<5                                  // 定义一个1到5的数,只包含1
+</code></pre>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class='docs'> 10. 逻辑运算符: 逻辑非:!a 逻辑与:a&&b 逻辑或:a||b </td>
+                <td class='code'>
+                    <pre><code class='language-swift'>!true                                  // false
+true && true                           // true
+false || false                         // false
+</code></pre>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+        <nav>
+            <a href="../03-optionals" class="prev" rel="prev">可选类型</a>
+            <a href="../05-strings-and-characters" class="next" rel="next">字符串操作</a>
+        </nav>
+
+    </main>
+
+    <footer>
+        Powered by <a href="https://github.com/DarielChen" target="_blank">DarielChen</a>
+        <a href="https://github.com/Agent-4/SwiftManual.git" target="_blank">Source</a>
+          Modified by <a class="four" href="https://github.com/Agent-4" target="_blank">FOUR</a>
+        <br>
+          <span class="Tips"><span style="color: #f66">❤</span> We're all stories in th end.  Just make it a good one, eh ?</span>
+      </footer>
+
+</div>
+<script async src="../source/site.js"></script>
+<script src="../source/prism.js"></script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Swift 3.0 语法速查 - 可选类型</title>
+    <link rel="stylesheet" href="../source/site.css">
+    <link rel="stylesheet" href="../source/prism.css">
+    <link rel="shortcut icon" href="../source/favicon.ico">
+</head>
+<body>
+<div id="container">
+    <h1>
+        <a href='#'><img src="../source/swift.png" > Swift 3.0 语法速查</a>
+        <span class="topic">可选类型</span>
+    </h1>
+
+    <main>
+        <table>
+            <tbody>
+            <tr>
+                <td class='docs'></td>
+                <td class='code'>
+                    <pre><code class='language-swift'> </code></pre>
+                </td>
+            </tr>
+
+            <tr>
+                <td class='docs'> 1. 可选类型: 用来表示有值或没值的两种状态 </td>
+                <td class='code'>
+                    <pre><code class='language-swift'>var errorCode: Int? = 404              // 在类型后面添加一个?
+print(errorCode)                       // Optional(404)
+errorCode = nil                        // 对非可选类型赋值为nil会报错
+print(errorCode)                       // nil</code></pre>
+                </td>
+            </tr>
+
+            <tr>
+                <td class='docs'> 2. 可选类型的默认值为nil </td>
+                <td class='code'>
+                    <pre><code class='language-swift'>var errorMessage: String?              // 只声明可选类型没赋值,会默认设置为nil
+// swift中nil的含义:nil是一个值,表示常量或变量的缺失,所以任何类型都可以设置为nil</code></pre>
+                </td>
+            </tr>
+
+            <tr>
+                <td class='docs'> 3. 使用if语句强制解析,可选类型不能直接使用需要转化 </td>
+                <td class='code'>
+                    <pre><code class='language-swift'>if errorCode != nil {                  // 确定可选类型包含值后可以在变量名后加!强制解析
+  print(errorCode!)                    // 404
+}
+print(errorMessage!)                   // ❌,对为nil的变量强制解析会报错
+</code></pre></td>
+
+            </tr>
+
+            <tr>
+                <td class='docs'> 4. 可选绑定,将可选类型赋值给一个临时的变量或者常量 </td>
+                <td class='code'>
+                    <pre><code class='language-swift'>if let code = errorCode {
+    print(code)                        // 输出:404, 自动解析
+}else {
+//    print(code)                      // ❌,code是局部变量
+    print(errorCode)                   // 如果errorCode = nil此处输出nil
+}</code></pre>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class='docs'> 5. 隐式解析可选类型:因为一定有值,所以可以免去解析的麻烦 </td>
+                <td class='code'>
+                    <pre><code class='language-swift'>let assumedString: String! = "A"       // 格式: 可选类型的?改成!
+print(assumedString)                   // A
+if let TempString = assumedString {    // 隐式解析可选类型可以被当做普通可选类型来使用
+    print(TempString)                  // A
+}</code></pre>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+        <nav>
+            <a href="../02-Variable-and-constant" class="prev" rel="prev">常量与变量</a>
+            <a href="../04-basic-operators" class="next" rel="next">基本运算符</a>
+        </nav>
+
+    </main>
+
+    <footer>
+        Powered by <a href="https://github.com/DarielChen" target="_blank">DarielChen</a>
+        <a href="https://github.com/Agent-4/SwiftManual.git" target="_blank">Source</a>
+          Modified by <a class="four" href="https://github.com/Agent-4" target="_blank">FOUR</a>
+        <br>
+          <span class="Tips"><span style="color: #f66">❤</span> We're all stories in th end.  Just make it a good one, eh ?</span>
+      </footer>
+
+</div>
+<script async src="../source/site.js"></script>
+<script src="../source/prism.js"></script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Swift 3.0 语法速查 - 类和结构体</title>
+    <link rel="stylesheet" href="../source/site.css">
+    <link rel="stylesheet" href="../source/prism.css">
+    <link rel="shortcut icon" href="../source/favicon.ico">
+</head>
+<body>
+<div id="container">
+    <h1>
+        <a href='#'><img src="../source/swift.png" > Swift 3.0 语法速查</a>
+        <span class="topic">类和结构体</span>
+    </h1>
+
+    <main>
+        <table>
+            <tbody>
+            <tr>
+                <td class='docs'></td>
+                <td class='code'>
+                    <pre><code class='language-swift'> </code></pre>
+                </td>
+            </tr>
+
+            <tr>
+                <td class='docs'> 1. 类和结构体: 都可以通过定义属性和添加方法来扩展功能 </td>
+                <td class='code'>
+                    <pre><code class='language-swift'>// 类和结构体的共同点:通过定义属性存储值; 通过定义方法提供功能; 通过定义构造器生成初始化值
+
+// 类与结构体的区别:
+// 类:允许一个类继承另一个;允许引用计数器对一个类的多次引用
+// 结构体:结构体通过复制的方式在代码中传递; 不使用引用计数器
+                    </code></pre>
+                </td>
+            </tr>
+
+            <tr>
+                <td class='docs'> 2. 类与结构体的语法定义 </td>
+                <td class='code'>
+                    <pre><code class='language-swift'>class ClassName {                       // 类名首字母用大写
+    // 属性和方法                        // 属性名和方法名的首字母用小写
+}
+
+struct StructureName {                 // 结构体的首字母也大写
+    // 属性和方法
+}
+                    </code></pre>
+                </td>
+            </tr>
+
+            <tr>
+                <td class='docs'> 3.实例化类和结构体,访问属性 </td>
+                <td class='code'>
+                    <pre><code class='language-swift'>struct Resolution {                    // 定义名为Resolution的结构体
+    var width = 0                      // 包含宽高两个Int类型的存储属性
+    var height = 0
+}
+
+class VideoMode {                      // 定义名为VideoMode的类
+    var resolution = Resolution()      // 初始化一个新的Resolution结构体实例
+    var interlaced = false             // 定义默认值为false的布尔类型
+    var frameRate = 0.0                // 默认值为0.0的Double类型
+    var name: String?                  // 默认值为nil的String可选类型
+}
+
+// 实例化结构体和类
+let someResolution = Resolution()      // 属性都被初始化为默认值
+let someVideoMode = VideoMode()
+
+print(someResolution.width)            // 0, 通过点语法访问属性
+print(someVideoMode.resolution.height) // 0, 访问子属性
+
+someVideoMode.resolution.height = 32   // 可以直接为属性和子属性赋值
+print(someVideoMode.resolution.height) // 32, 访问子属性
+                    </code></pre></td>
+            </tr>
+
+            <tr>
+                <td class='docs'> 4. 结构体的默认构造器 </td>
+                <td class='code'>
+                    <pre><code class='language-swift'>let initRes1 = Resolution(width: 64, height: 48) // 结构体可设置属性的默认构造器
+print("\(initRes1.width), \(initRes1.height)") // 64, 48
+
+// 类没有默认构造器,需要自定义
+                    </code></pre>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class='docs'> 5. 结构体和枚举的值传递都是通过值拷贝 </td>
+                <td class='code'>
+                    <pre><code class='language-swift'>var initRes2 = initRes1                // 相当于拷贝了一份initRes1给initRes2
+print(initRes1.width)                  // 64,
+print(initRes2.width)                  // 64, 改变前的值
+initRes2.width = 32
+print(initRes1.width)                  // 64,
+print(initRes2.width)                  // 32, initRes1的改变不会影响initRes2
+
+enum Direction {                       // 枚举
+    case North, South, East, West
+}
+var direct1 = Direction.North
+var direct2 = direct1
+direct2 = Direction.South
+print(direct1)                         // North,direct2的值改变不会影响direct1
+print(direct2)                         // South
+                    </code></pre>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class='docs'> 6. 类是引用拷贝,拷贝后的值的改变会影响原来的 </td>
+                <td class='code'>
+                    <pre><code class='language-swift'>let videoM1 = VideoMode()
+videoM1.name = "VideoM1"
+
+// videoM1传递的是一个引用,videoM2还是指向videoM1那一块存储空间
+var videoM2 = videoM1
+videoM2.name = "videoM2"
+print(videoM1.name!)                   // videoM2
+print(videoM2.name!)                   // videoM2, videoM2的属性改变会影响带videoM1
+
+// 恒等运算符(===)用三个等于表示,表示两个类型的常量或变量是否引用同一个实例
+print(videoM1 === videoM2)            // true, 使用"==="判断两个引用是否指向同一个对象
+                    </code></pre>
+                </td>
+            </tr>
+
+            <tr>
+                <td class='docs'> 7. 类和结构体的选择 </td>
+                <td class='code'>
+                    <pre><code class='language-swift'>// 结构体: 只是用来封装少量简单的数据值;实例被赋值或传递存储的时候需要进行值拷贝,不需要用到继承
+// 类: 需要包含复杂的属性方法,能形成一个抽象的事物描述;需要用到继承;需要用到引用拷贝
+
+// 字符串,数组,字典的底层都是通过结构体实现的,所以它们在被赋值的时候都是通过值拷贝,
+// 当然了swift在内部会做性能优化,不会是只要赋值就拷贝,只有在必要的时候才会进行值拷贝.
+                    </code></pre>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+        <nav>
+            <a href="../12-enumerations" class="prev" rel="prev">枚举</a>
+            <a href="../14-properties" class="next" rel="next">属性</a>
+        </nav>
+
+    </main>
+
+    <footer>
+        Powered by <a href="https://github.com/DarielChen" target="_blank">DarielChen</a>
+        <a href="https://github.com/Agent-4/SwiftManual.git" target="_blank">Source</a>
+          Modified by <a class="four" href="https://github.com/Agent-4" target="_blank">FOUR</a>
+        <br>
+          <span class="Tips"><span style="color: #f66">❤</span> We're all stories in th end.  Just make it a good one, eh ?</span>
+    </footer>
+
+</div>
+<script async src="../source/site.js"></script>
+<script src="../source/prism.js"></script>
+</body>
+</html>

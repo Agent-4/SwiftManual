@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Swift 3.0 语法速查 - 下标</title>
+    <link rel="stylesheet" href="../source/site.css">
+    <link rel="stylesheet" href="../source/prism.css">
+    <link rel="shortcut icon" href="../source/favicon.ico">
+</head>
+<body>
+<div id="container">
+    <h1>
+        <a href='#'><img src="../source/swift.png" > Swift 3.0 语法速查</a>
+        <span class="topic">下标</span>
+    </h1>
+
+    <main>
+        <table>
+            <tbody>
+            <tr>
+                <td class='docs'></td>
+                <td class='code'>
+                    <pre><code class='language-swift'> </code></pre>
+                </td>
+            </tr>
+
+            <tr>
+                <td class='docs'> 1. 下标: 定义在类.结构体.枚举中,可以快速访问集合列表序列 </td>
+                <td class='code'>
+                    <pre><code class='language-swift'>subscript(index: Int) -> Int {          // 下标语法, subscript(参数名: 参数类型) -> 返回值
+    get {                               // 语法类似于实例方法和计算属性语法的混合
+        // 返回一个整数类型
+    }
+    set(newValue) {                     // 下标可以设定为读写或者只读
+        // 执行赋值操作
+    }
+}                    </code></pre>
+                </td>
+            </tr>
+
+            <tr>
+                <td class='docs'> 2. 只读下标的实现 </td>
+                <td class='code'>
+                    <pre><code class='language-swift'>struct TimeTable {
+    let multiplier: Int
+    subscript(index: Int) -> Int {      // 用来表示传入整数的乘法
+        return multiplier * index
+    }                                   // 省略set,下标定义为只读的
+}
+let threeTimesTable = TimeTable(multiplier: 3) // 通过构造函数赋值给实例成员属性
+print(threeTimesTable[6])               // 18, 通过下标访问实例传入参数并获取返回值
+                    </code></pre>
+                </td>
+            </tr>
+
+            <tr>
+                <td class='docs'> 3.下标的用法 </td>
+                <td class='code'>
+                    <pre><code class='language-swift'>struct Matrix {
+    var rows: Int, columns: Int
+    subscript(row: Int, column: Int) -> Int { // 二维下标
+        get {
+            return rows + columns
+        }
+        set {                           // 默认参数newValue
+            rows += newValue
+            columns += newValue
+
+            rows += row
+            columns += column
+        }
+    }
+}
+
+var matrix = Matrix(rows: 2, columns: 3)
+matrix[2, 2] = 8                         // 调用下标的set和get方法
+print(matrix.columns)                    // 13
+print(matrix.rows)                       // 12
+                    </code></pre></td>
+            </tr>
+
+
+            </tbody>
+        </table>
+        <nav>
+            <a href="../15-methods" class="prev" rel="prev">方法</a>
+            <a href="../17-inheritance" class="next" rel="next">继承</a>
+        </nav>
+
+    </main>
+
+    <footer>
+        Powered by <a href="https://github.com/DarielChen" target="_blank">DarielChen</a>
+        <a href="https://github.com/Agent-4/SwiftManual.git" target="_blank">Source</a>
+        Modified by <a class="four" href="https://github.com/Agent-4" target="_blank">FOUR</a>
+        <br>
+        <span class="Tips"><span style="color: #f66">❤</span> We're all stories in th end.  Just make it a good one, eh ?</span>
+    </footer>
+
+</div>
+<script async src="../source/site.js"></script>
+<script src="../source/prism.js"></script>
+</body>
+</html>

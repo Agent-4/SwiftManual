@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Swift 3.0 语法速查 - 字符串操作</title>
+    <link rel="stylesheet" href="../source/site.css">
+    <link rel="stylesheet" href="../source/prism.css">
+    <link rel="shortcut icon" href="../source/favicon.ico">
+</head>
+<body>
+<div id="container">
+    <h1>
+        <a href='#'><img src="../source/swift.png" > Swift 3.0 语法速查</a>
+        <span class="topic">字符串操作</span>
+    </h1>
+
+    <main>
+        <table>
+            <tbody>
+            <tr>
+                <td class='docs'></td>
+                <td class='code'>
+                    <pre><code class='language-swift'> </code></pre>
+                </td>
+            </tr>
+
+            <tr>
+                <td class='docs'> 1. 字符串: 一个有序的字符类型的集合 </td>
+                <td class='code'>
+                    <pre><code class='language-swift'>let someString = "literal"             // 通过""包裹字符串,为常量变量提供初始值
+
+var emptyString1 = ""                  // 空字符串,""内为空
+let emptyString2 = String()            // 空字符串,通过String()初始化方法置为空
+emptyString2.isEmpty                   // true, 通过isEmpty方法判断是否为空
+emptyString1 = "Not Empty"             // Not Empty, 变量字符串可变
+emptyString2 = "Change Constant String" // 常量字符串不可变
+
+// 字符串的值传递方式是通过值传递的,传递的时候是对已有的字符串创建副本再进行传递或赋值操作.</code></pre>
+                </td>
+            </tr>
+
+            <tr>
+                <td class='docs'> 2. 字符串中字符的操作 </td>
+                <td class='code'>
+                    <pre><code class='language-swift'>let char: Character = "a"              // a, 字符的类型为Character
+
+for char in emptyString1.characters {  // for循环后面会详述
+    print(char)                        // 依次输出emptyString1中所有字符
+}
+emptyString1.characters.count          // 9, 获取字符串中字符个数包括空格</code></pre>
+                </td>
+            </tr>
+
+            <tr>
+                <td class='docs'> 3. 字符串和字符的拼接 </td>
+                <td class='code'>
+                    <pre><code class='language-swift'>var string1 = "Hello"
+var string2 = " World"
+
+var string3 = string1 + string2        // Hello World, 通过"+"将两个字符串相连
+string1 += string2                     // Hello World, 等价于string1 = string1+string2
+string1.append(" !")                   // Hello World !, 通过append()方法拼接
+
+let messages = "Hello \(string2) !"    // Hello World !, 通过将常量或变量放入\()中</code></pre></td>
+            </tr>
+
+            <tr>
+                <td class='docs'> 4. 字符串中字符的索引 </td>
+                <td class='code'>
+                    <pre><code class='language-swift'>let messChar = messages[messages.startIndex]  // H,通过第一个字符的索引获取字符
+
+let firstIndex = messages.index(after: messages.startIndex)  // 1, 第一个字符的索引
+
+let lastIndex = messages.index(before: messages.endIndex)  // 13, 最后一个字符的索引
+
+let index = messages.index(messages.startIndex, offsetBy: 4)  // 4, 初始位置偏移4
+messages[index]                        // o, 通过索引获得的字符为o
+
+messages[messages.endIndex]            // ❌, 注意:索引不能越界</code></pre>
+                </td>
+            </tr>
+
+            <tr>
+                <td class='docs'> 5. 字符串的插入和删除 </td>
+                <td class='code'>
+                    <pre><code class='language-swift'>var welcome = "Hello"
+
+welcome.insert("!", at: welcome.endIndex)  // Hello!, 将!插入welcome的末尾
+
+welcome.insert(contentsOf: "world".characters, at: welcome.index(before: welcome.endIndex))
+                                       // Helloworld!, 注意:插入的内容是:"world".characters
+
+welcome.remove(at: welcome.index(before: welcome.endIndex)) // !
+print(welcome)                         // Helloworld, 删除最后一位
+
+let range = welcome.index(welcome.endIndex, offsetBy: -5)..< welcome.endIndex // 后5位的范围
+welcome.removeSubrange(range)          // 删除"world", welcome的值为Hello</code></pre>
+                </td>
+            </tr>
+
+            <tr>
+                <td class='docs'> 6. 字符串的比较操作 </td>
+                <td class='code'>
+                    <pre><code class='language-swift'>welcome == "Hello"                     // true, 字符串可以用==, !=进行比较操作
+welcome != "Hello"                     // false
+
+welcome.hasPrefix("Hel")               // true, 是否有特定的前缀
+
+welcome.hasSuffix("llo")               // true, 是否有特定的后缀</code></pre>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+        <nav>
+            <a href="../04-basic-operators" class="prev" rel="prev">基本运算符</a>
+            <a href="../06-array" class="next" rel="next">数组</a>
+        </nav>
+
+    </main>
+
+    <footer>
+        Powered by <a href="https://github.com/DarielChen" target="_blank">DarielChen</a>
+        <a href="https://github.com/Agent-4/SwiftManual.git" target="_blank">Source</a>
+          Modified by <a class="four" href="https://github.com/Agent-4" target="_blank">FOUR</a>
+        <br>
+          <span class="Tips"><span style="color: #f66">❤</span> We're all stories in th end.  Just make it a good one, eh ?</span>
+    </footer>
+
+</div>
+<script async src="../source/site.js"></script>
+<script src="../source/prism.js"></script>
+</body>
+</html>

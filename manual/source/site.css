@@ -219,7 +219,8 @@ nav {
     float: left;
   }
   li a {
-    margin-top: 40px;
-    width: 120px;
+    margin-top: 45px;
+    width: 110px;
+    padding: 1.5em 0 0 0;
   }
 }

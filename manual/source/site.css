@@ -202,7 +202,7 @@ nav {
 }
 @media screen and (max-width: 1090px) {
   main {
-    padding: 0;
+    padding: 6px;
   }
 }
 @media screen and (max-width: 700px) {
@@ -216,6 +216,10 @@ nav {
 }
 @media screen and (max-width: 400px) {
   li {
-    float: none;
+    float: left;
+  }
+  li a {
+    margin-top: 40px;
+    width: 120px;
   }
 }
